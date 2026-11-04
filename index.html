@@ -1,32 +1,154 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SudokuBits</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SudokuBits is a quiet sudoku game for Android. Solve a daily puzzle or play offline at your own pace.">
+  <title>SudokuBits — Quiet sudoku for Android</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <script src="assets/theme.js"></script>
+  <script src="assets/puzzle-demo.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-<header>
-  <h1>SudokuBits</h1>
-  <p class="updated">A calm sudoku game for Android by Jc Calayag.</p>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/mark.svg" alt="" width="38" height="38">
+        <span>SudokuBits</span>
+      </a>
+      <button class="theme-toggle" type="button" aria-pressed="false" hidden>
+        <span class="theme-indicator" aria-hidden="true"></span>
+        Dark mode
+      </button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="card">
-  <h2>English</h2>
-  <p><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms</a></p>
-</div>
-<div class="card" lang="th">
-  <h2>ภาษาไทย</h2>
-  <p><a href="th/privacy.html">นโยบายความเป็นส่วนตัว</a> · <a href="th/terms.html">ข้อกำหนด</a></p>
-</div>
-<div class="card" lang="ja">
-  <h2>日本語（ナンプレBits）</h2>
-  <p><a href="ja/privacy.html">プライバシーポリシー</a> · <a href="ja/terms.html">利用規約</a></p>
-</div>
+  <main id="main" class="shell home-main" tabindex="-1">
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A quiet sudoku game for Android</p>
+        <h1 id="home-title">SudokuBits</h1>
+        <p class="hero-line">Quiet ink, golden finish.</p>
+        <p class="hero-description">Settle into a puzzle at your own pace. Place the last number in a row, column, or box and watch it turn gold.</p>
+        <a class="store-tile" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5 20 12 5 20.5Z"/></svg>
+          Get it on Google Play
+        </a>
+      </div>
 
-<footer>Contact: <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a></footer>
-</main>
+      <figure class="puzzle-sheet">
+        <div class="puzzle-heading" aria-hidden="true">
+          <span class="eyebrow">From the puzzle book</span>
+          <span class="puzzle-index">No. 001</span>
+        </div>
+        <div class="puzzle-board" aria-hidden="true">
+          <div class="puzzle-row">
+            <span>1</span><span></span><span>2</span><span>9</span><span>5</span><span></span><span></span><span>4</span><span>8</span>
+          </div>
+          <div class="puzzle-row">
+            <span>4</span><span>8</span><span></span><span>2</span><span></span><span></span><span></span><span>6</span><span>9</span>
+          </div>
+          <div class="puzzle-row">
+            <span>6</span><span></span><span>9</span><span>1</span><span></span><span></span><span></span><span>2</span><span>7</span>
+          </div>
+          <div class="puzzle-row">
+            <span></span><span>9</span><span></span><span>5</span><span>6</span><span></span><span>7</span><span></span><span></span>
+          </div>
+          <div class="puzzle-row">
+            <span></span><span>1</span><span>3</span><span></span><span></span><span></span><span></span><span></span><span>5</span>
+          </div>
+          <div class="puzzle-row">
+            <span>2</span><span>5</span><span>6</span><span></span><span>8</span><span>7</span><span></span><span>9</span><span></span>
+          </div>
+          <div class="puzzle-row">
+            <span></span><span></span><span>1</span><span></span><span>2</span><span>5</span><span></span><span></span><span></span>
+          </div>
+          <div class="puzzle-row">
+            <span></span><span>6</span><span></span><span></span><span>3</span><span>9</span><span>2</span><span>1</span><span></span>
+          </div>
+          <div class="puzzle-row">
+            <span></span><span>2</span><span></span><span></span><span></span><span></span><span></span><span>5</span><span>3</span>
+          </div>
+        </div>
+        <figcaption>
+          <span>Classic sudoku</span>
+          <button class="puzzle-toggle" type="button" hidden>
+            <svg class="play-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8,5.6v12.8a1,1 0,0 0,1.53 0.85l10.1,-6.4a1,1 0,0 0,0 -1.7L9.53,4.75A1,1 0,0 0,8 5.6Z"/>
+            </svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+              <rect x="6.5" y="5" width="4" height="14" rx="1.2"/>
+              <rect x="13.5" y="5" width="4" height="14" rx="1.2"/>
+            </svg>
+            <span>Play preview</span>
+          </button>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="play-notes" aria-labelledby="play-title">
+      <div>
+        <p class="eyebrow">Make time for a puzzle</p>
+        <h2 id="play-title">Sudoku at your pace</h2>
+      </div>
+      <dl class="play-list">
+        <div>
+          <dt>
+            <span class="note-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 4v16m6-16v16M4 9h16M4 15h16"/></svg>
+            </span>
+            Play offline
+          </dt>
+          <dd>Open a puzzle anywhere. SudokuBits saves your place on your phone so you can pick it up later.</dd>
+        </div>
+        <div>
+          <dt>
+            <span class="note-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-12 5 2 2 4-4"/></svg>
+            </span>
+            A new puzzle each day
+          </dt>
+          <dd>Make the daily Classic puzzle part of your routine and mark the day with a solve.</dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-credit">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span>SudokuBits</span>
+        </a>
+        <p>Made by Jc Calayag</p>
+        <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>
+      </div>
+      <nav class="footer-languages" aria-label="Legal documents by language">
+        <div lang="en">
+          <p>English</p>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div lang="th">
+          <p>ภาษาไทย</p>
+          <a href="th/privacy.html" hreflang="th">นโยบายความเป็นส่วนตัว</a>
+          <a href="th/terms.html" hreflang="th">ข้อกำหนด</a>
+        </div>
+        <div lang="ja">
+          <p>日本語</p>
+          <a href="ja/privacy.html" hreflang="ja">プライバシーポリシー</a>
+          <a href="ja/terms.html" hreflang="ja">利用規約</a>
+        </div>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

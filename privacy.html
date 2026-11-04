@@ -1,19 +1,46 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SudokuBits privacy policy</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SudokuBits privacy policy</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <script src="assets/theme.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-<header>
-  <h1>SudokuBits privacy policy</h1>
-  <p class="updated">Last updated: November 4, 2026</p>
-  <p class="langs">English · <a href="th/privacy.html">ภาษาไทย</a> · <a href="ja/privacy.html">日本語</a></p>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/mark.svg" alt="" width="38" height="38">
+        <span>SudokuBits</span>
+      </a>
+      <button class="theme-toggle" type="button" aria-pressed="false" hidden>
+        <span class="theme-indicator" aria-hidden="true"></span>
+        Dark mode
+      </button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" aria-current="page">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main" class="shell legal-main" tabindex="-1">
+    <header class="legal-heading">
+      <p class="eyebrow">App policies</p>
+      <h1>SudokuBits privacy policy</h1>
+      <p class="updated">Last updated: November 4, 2026</p>
+      <nav class="langs" aria-label="Document language">
+        <a href="privacy.html" lang="en" hreflang="en" aria-current="page">English</a>
+        <a href="./th/privacy.html" lang="th" hreflang="th">ภาษาไทย</a>
+        <a href="./ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
+      </nav>
+    </header>
+
+    <div class="legal-copy">
 <div class="card">
   <p><strong>In short:</strong> your game stays on your phone. If you connect Google Play Games, your
   progress is also saved in your own Google account and your scores can show on public leaderboards.
@@ -52,14 +79,14 @@ Contact for anything about your privacy: <a href="mailto:support.sudokubits@gmai
 <p>Google handles this data under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
 You can change who sees your game activity in the Play Games app's settings.</p>
 
-<h2>Ads (Google AdMob)</h2>
+<h2 id="ads">Ads (Google AdMob)</h2>
 <p>The Shop offers optional rewarded ads: you watch one only when you tap "Watch an ad", and it gives you
 coins. There are no other ads. We ask Google for <strong>non-personalized ads only</strong> (with restricted
 data processing), so ads aren't based on your activity in other apps or websites.</p>
 <p>When an ad loads or plays, the Google Mobile Ads SDK in the app collects and shares with Google:</p>
-<div class="table-wrap">
+<div class="table-wrap" role="region" aria-labelledby="ads" tabindex="0">
 <table>
-  <tr><th>Data</th><th>Why</th></tr>
+  <tr><th scope="col">Data</th><th scope="col">Why</th></tr>
   <tr><td>IP address (Google may estimate a rough location from it)</td><td>Showing ads, ad measurement, fraud prevention</td></tr>
   <tr><td>Ad interactions (for example app launches, taps and video views)</td><td>Showing ads, ad measurement, analytics, fraud prevention</td></tr>
   <tr><td>Diagnostics (for example app launch time and performance)</td><td>Analytics and fraud prevention</td></tr>
@@ -122,10 +149,10 @@ how to use them. The data controller and contact is Jc Calayag
 in this policy, and you may ask us to disclose, correct or stop using it. The policy is also available
 <a href="ja/privacy.html">in Japanese</a>, with the external transmission (外部送信) notice below.</p>
 
-<h2>External transmission notice (Japan)</h2>
-<div class="table-wrap">
+<h2 id="external-transmission">External transmission notice (Japan)</h2>
+<div class="table-wrap" role="region" aria-labelledby="external-transmission" tabindex="0">
 <table>
-  <tr><th>Sent to</th><th>What</th><th>Why</th></tr>
+  <tr><th scope="col">Sent to</th><th scope="col">What</th><th scope="col">Why</th></tr>
   <tr><td>Google LLC (Google AdMob, Google Mobile Ads SDK)</td>
       <td>IP address, ad interactions, diagnostics, app set ID</td>
       <td>Showing and measuring ads, fraud prevention.
@@ -139,8 +166,20 @@ in this policy, and you may ask us to disclose, correct or stop using it. The po
 
 <h2>Changes</h2>
 <p>If this policy changes, we update this page and the date at the top. See also our <a href="terms.html">terms</a>.</p>
+    </div>
+  </main>
 
-<footer>SudokuBits · Jc Calayag · <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a></footer>
-</main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-credit">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span>SudokuBits</span>
+        </a>
+        <p>Made by Jc Calayag</p>
+        <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

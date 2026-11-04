@@ -1,19 +1,46 @@
 <!doctype html>
 <html lang="th">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>นโยบายความเป็นส่วนตัวของ SudokuBits</title>
-<link rel="stylesheet" href="../style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>นโยบายความเป็นส่วนตัวของ SudokuBits</title>
+  <link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+  <script src="../assets/theme.js"></script>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<main>
-<header>
-  <h1>นโยบายความเป็นส่วนตัวของ SudokuBits</h1>
-  <p class="updated">ปรับปรุงล่าสุด: 4 พฤศจิกายน 2569 (ค.ศ. 2026)</p>
-  <p class="langs"><a href="../privacy.html">English</a> · ภาษาไทย · <a href="../ja/privacy.html">日本語</a></p>
-</header>
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/mark.svg" alt="" width="38" height="38">
+        <span>SudokuBits</span>
+      </a>
+      <button class="theme-toggle" type="button" aria-pressed="false" hidden>
+        <span class="theme-indicator" aria-hidden="true"></span>
+        โหมดมืด
+      </button>
+      <nav class="site-nav" aria-label="เมนูหลัก">
+        <a href="../index.html">หน้าแรก</a>
+        <a href="privacy.html" aria-current="page">นโยบายความเป็นส่วนตัว</a>
+        <a href="terms.html">ข้อกำหนด</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main" class="shell legal-main" tabindex="-1">
+    <header class="legal-heading">
+      <p class="eyebrow">นโยบายของแอป</p>
+      <h1>นโยบายความเป็นส่วนตัวของ SudokuBits</h1>
+      <p class="updated">ปรับปรุงล่าสุด: 4 พฤศจิกายน 2569 (ค.ศ. 2026)</p>
+      <nav class="langs" aria-label="ภาษาของเอกสาร">
+        <a href="../privacy.html" lang="en" hreflang="en">English</a>
+        <a href="privacy.html" lang="th" hreflang="th" aria-current="page">ภาษาไทย</a>
+        <a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
+      </nav>
+    </header>
+
+    <div class="legal-copy">
 <div class="card">
   <p><strong>สรุปสั้น ๆ:</strong> ข้อมูลเกมของคุณอยู่ในโทรศัพท์ของคุณ ถ้าคุณเชื่อมต่อ Google Play Games
   ความคืบหน้าจะถูกบันทึกไว้ในบัญชี Google ของคุณเองด้วย และคะแนนของคุณอาจแสดงในอันดับผู้เล่นแบบสาธารณะ
@@ -52,14 +79,14 @@
 <p>Google ดูแลข้อมูลเหล่านี้ตาม<a href="https://policies.google.com/privacy?hl=th">นโยบายความเป็นส่วนตัวของ Google</a>
 คุณเลือกได้ว่าใครจะเห็นกิจกรรมเกมของคุณในการตั้งค่าของแอป Play Games</p>
 
-<h2>โฆษณา (Google AdMob)</h2>
+<h2 id="ads">โฆษณา (Google AdMob)</h2>
 <p>ร้านค้ามีโฆษณาแบบรับรางวัลเป็นทางเลือก คุณจะดูโฆษณาก็ต่อเมื่อแตะ "ดูโฆษณา" เท่านั้น และจะได้รับเหรียญ
 ไม่มีโฆษณาแบบอื่น เราขอให้ Google แสดง<strong>เฉพาะโฆษณาที่ไม่ปรับตามตัวคุณ</strong> (พร้อมการประมวลผลข้อมูลแบบจำกัด)
 โฆษณาจึงไม่อิงจากกิจกรรมของคุณในแอปหรือเว็บไซต์อื่น</p>
 <p>เมื่อโฆษณาโหลดหรือเล่น Google Mobile Ads SDK ในแอปจะเก็บและแชร์ข้อมูลต่อไปนี้กับ Google:</p>
-<div class="table-wrap">
+<div class="table-wrap" role="region" aria-labelledby="ads" tabindex="0">
 <table>
-  <tr><th>ข้อมูล</th><th>เพื่ออะไร</th></tr>
+  <tr><th scope="col">ข้อมูล</th><th scope="col">เพื่ออะไร</th></tr>
   <tr><td>ที่อยู่ IP (Google อาจใช้ประมาณตำแหน่งคร่าว ๆ)</td><td>แสดงโฆษณา วัดผลโฆษณา ป้องกันการฉ้อโกง</td></tr>
   <tr><td>การโต้ตอบกับโฆษณา (เช่น การเปิดแอป การแตะ การดูวิดีโอ)</td><td>แสดงโฆษณา วัดผลโฆษณา วิเคราะห์ ป้องกันการฉ้อโกง</td></tr>
   <tr><td>ข้อมูลวินิจฉัย (เช่น เวลาเปิดแอปและประสิทธิภาพ)</td><td>วิเคราะห์และป้องกันการฉ้อโกง</td></tr>
@@ -107,10 +134,10 @@
 <p>ฐานทางกฎหมาย: การให้บริการเกมตามที่คุณขอ (ข้อมูลในโทรศัพท์และข้อมูลบนคลาวด์เมื่อคุณเชื่อมต่อ) และความยินยอมของคุณ
 (การเชื่อมต่อ Play Games และการเลือกดูโฆษณา) Google จัดเก็บและประมวลผลข้อมูลบนเซิร์ฟเวอร์ในหลายประเทศ รวมถึงนอกประเทศไทย</p>
 
-<h2>การส่งข้อมูลออกภายนอก</h2>
-<div class="table-wrap">
+<h2 id="external-transmission">การส่งข้อมูลออกภายนอก</h2>
+<div class="table-wrap" role="region" aria-labelledby="external-transmission" tabindex="0">
 <table>
-  <tr><th>ผู้รับ</th><th>ข้อมูล</th><th>เพื่ออะไร</th></tr>
+  <tr><th scope="col">ผู้รับ</th><th scope="col">ข้อมูล</th><th scope="col">เพื่ออะไร</th></tr>
   <tr><td>Google LLC (Google AdMob, Google Mobile Ads SDK)</td>
       <td>ที่อยู่ IP การโต้ตอบกับโฆษณา ข้อมูลวินิจฉัย app set ID</td>
       <td>แสดงและวัดผลโฆษณา ป้องกันการฉ้อโกง</td></tr>
@@ -122,8 +149,20 @@
 
 <h2>การเปลี่ยนแปลง</h2>
 <p>ถ้านโยบายนี้เปลี่ยน เราจะปรับปรุงหน้านี้และวันที่ด้านบน ดู<a href="terms.html">ข้อกำหนด</a>ของเราด้วย</p>
+    </div>
+  </main>
 
-<footer>SudokuBits · Jc Calayag · <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a></footer>
-</main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-credit">
+        <a class="brand" href="../index.html">
+          <img src="../assets/mark.svg" alt="" width="32" height="32">
+          <span>SudokuBits</span>
+        </a>
+        <p>พัฒนาโดย Jc Calayag</p>
+        <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

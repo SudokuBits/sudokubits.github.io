@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#26405a"/>
+  <path fill="#182b3e" d="M0 44v5a15 15 0 0 0 15 15h34a15 15 0 0 0 15-15v-5a15 15 0 0 1-15 15H15A15 15 0 0 1 0 44Z"/>
+  <defs>
+    <g id="tile">
+      <rect y="1.5" width="10.5" height="10.5" rx="2.25" fill="#d3cbbb"/>
+      <rect width="10.5" height="10.5" rx="2.25" fill="#f5f1e8"/>
+    </g>
+  </defs>
+  <use href="#tile" x="14" y="13"/>
+  <use href="#tile" x="26.75" y="13"/>
+  <use href="#tile" x="39.5" y="13"/>
+  <use href="#tile" x="14" y="25.75"/>
+  <use href="#tile" x="39.5" y="25.75"/>
+  <use href="#tile" x="14" y="38.5"/>
+  <use href="#tile" x="26.75" y="38.5"/>
+  <use href="#tile" x="39.5" y="38.5"/>
+  <g transform="rotate(-10 32 30)">
+    <rect x="25.75" y="25.25" width="12.5" height="12.5" rx="2.7" fill="#b07a22"/>
+    <rect x="25.75" y="23.5" width="12.5" height="12.5" rx="2.7" fill="#e3a83a"/>
+    <path d="M34 26.4h-3.6l-.45 3.15a2.5 2.5 0 0 1 2.1-.55c3 .5 2.35 4.3-.2 4.3a3.4 3.4 0 0 1-2.05-.7" fill="none" stroke="#3b2a00" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
