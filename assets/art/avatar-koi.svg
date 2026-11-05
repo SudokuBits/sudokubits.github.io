@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs><clipPath id="akoic1"><path d="M10.5,0 H37.5 A10.5,10.5 0 0 1 48,10.5 V35.5 A10.5,10.5 0 0 1 37.5,46 H10.5 A10.5,10.5 0 0 1 0,35.5 V10.5 A10.5,10.5 0 0 1 10.5,0 Z"/></clipPath></defs>
+  <path d="M10.5,0 H37.5 A10.5,10.5 0 0 1 48,10.5 V37.5 A10.5,10.5 0 0 1 37.5,48 H10.5 A10.5,10.5 0 0 1 0,37.5 V10.5 A10.5,10.5 0 0 1 10.5,0 Z" fill="#a3c7bd"/>
+  <g>
+    <g clip-path="url(#akoic1)">
+    <path d="M10.5,0 H37.5 A10.5,10.5 0 0 1 48,10.5 V35.5 A10.5,10.5 0 0 1 37.5,46 H10.5 A10.5,10.5 0 0 1 0,35.5 V10.5 A10.5,10.5 0 0 1 10.5,0 Z" fill="#c7e0d9"/>
+    <path d="M6,40 Q9,38 12,40 M11,44.5 Q14,42.5 17,44.5" fill="none" stroke="#86b6aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(24 24) rotate(-28) translate(-24 -24)">
+      <path d="M17.6,17 Q9.5,16.5 8,24.5 Q14.5,24.5 18.4,20.8 Z" fill="#a8c3dd" stroke="#22364c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M30.4,17 Q38.5,16.5 40,24.5 Q33.5,24.5 29.6,20.8 Z" fill="#a8c3dd" stroke="#22364c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24,6 C29.5,6 31.5,11 31.5,16 C31.5,23 27.5,28.5 26.2,32.5 L32.5,42 Q27.8,40.8 24,38.2 Q20.2,40.8 15.5,42 L21.8,32.5 C20.5,28.5 16.5,23 16.5,16 C16.5,11 18.5,6 24,6 Z" fill="#fff8ea" stroke="#22364c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24,14 C27.2,15 28.2,19 27.6,23 C27,27 25.5,30 24,32.4 C22.5,30 21,27 20.4,23 C19.8,19 20.8,15 24,14 Z" fill="#5b7fa6"/>
+      <path d="M21.2,23.6 l2.8,2 l2.8,-2 M21.8,27.6 l2.2,1.6 l2.2,-1.6" fill="none" stroke="#fff8ea" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M23.4,17.6 h1.2 a0.8,0.8 0 0 1 0.8,0.8 v1.2 a0.8,0.8 0 0 1 -0.8,0.8 h-1.2 a0.8,0.8 0 0 1 -0.8,-0.8 v-1.2 a0.8,0.8 0 0 1 0.8,-0.8 z" fill="#fff8ea"/>
+      <path d="M24,32.5 V37.2" fill="none" stroke="#22364c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20.1,11.2 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 z M25.7,11.2 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 z" fill="#22364c"/>
+      <path d="M21.5,7.2 Q19.5,4.2 16.8,4.6 M26.5,7.2 Q28.5,4.2 31.2,4.6" fill="none" stroke="#22364c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    </g>
+  </g>
+</svg>

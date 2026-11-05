@@ -2,29 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="How the SudokuBits app handles your data: what stays on your phone, Google Play Games, optional ads and your rights.">
   <title>SudokuBits privacy policy</title>
-  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icon-512.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="assets/icon-512.png">
   <script src="assets/theme.js"></script>
+  <script src="assets/site.js" defer></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="index.html">
-        <img src="assets/mark.svg" alt="" width="38" height="38">
+        <img class="brand-mark" src="assets/icon.svg" alt="" width="36" height="36">
         <span>SudokuBits</span>
       </a>
-      <button class="theme-toggle" type="button" aria-pressed="false" hidden>
-        <span class="theme-indicator" aria-hidden="true"></span>
-        Dark mode
-      </button>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="privacy.html" aria-current="page">Privacy Policy</a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="index.html#modes">Features</a>
+        <a href="index.html#try">Try a puzzle</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
         <a href="terms.html">Terms</a>
+        <div class="nav-extra">
+          <p class="eyebrow">Policies in other languages</p>
+          <div class="langs-inline">
+            <a href="th/privacy.html" lang="th" hreflang="th">ภาษาไทย</a>
+            <a href="ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
+          </div>
+          <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250" loading="lazy"></a>
+        </div>
       </nav>
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" hidden>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+        </button>
+        <a class="tile-button primary header-cta" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">Get the app</a>
+        <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" data-open="Open menu" data-close="Close menu" hidden>
+          <svg class="menu-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="menu-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -32,27 +54,28 @@
     <header class="legal-heading">
       <p class="eyebrow">App policies</p>
       <h1>SudokuBits privacy policy</h1>
-      <p class="updated">Last updated: November 4, 2026</p>
+      <p class="updated">Last updated: November 5, 2026</p>
       <nav class="langs" aria-label="Document language">
         <a href="privacy.html" lang="en" hreflang="en" aria-current="page">English</a>
-        <a href="./th/privacy.html" lang="th" hreflang="th">ภาษาไทย</a>
-        <a href="./ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
+        <a href="th/privacy.html" lang="th" hreflang="th">ภาษาไทย</a>
+        <a href="ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
       </nav>
     </header>
 
     <div class="legal-copy">
-<div class="card">
+<div class="note">
   <p><strong>In short:</strong> your game stays on your phone. If you connect Google Play Games, your
   progress is also saved in your own Google account and your scores can show on public leaderboards.
   Ads are optional, come from Google AdMob and are not personalized. We have no server, no analytics,
   and we never sell your data.</p>
 </div>
 
-<h2>Who we are</h2>
-<p>SudokuBits is a sudoku game for Android made by Jc Calayag, an individual developer ("we", "us").
-Contact for anything about your privacy: <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>.</p>
+<h2 id="who">Who we are</h2>
+<p>SudokuBits is a sudoku game for Android made by Jc Calayag, an individual developer ("we", "us"), who is
+the controller of the personal data described here. Contact for anything about your privacy:
+<a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>.</p>
 
-<h2>What stays on your phone</h2>
+<h2 id="phone">What stays on your phone</h2>
 <p>The app keeps these in its own private storage on your phone. We have no server, so we never receive them:</p>
 <ul>
   <li>Your player name and the avatar you chose.</li>
@@ -63,7 +86,7 @@ Contact for anything about your privacy: <a href="mailto:support.sudokubits@gmai
 </ul>
 <p>Uninstalling the app or clearing its data erases all of this, unless it is also in your Play Games cloud save.</p>
 
-<h2>Google Play Games (optional)</h2>
+<h2 id="play-games">Google Play Games (optional)</h2>
 <p>Play Games is optional; every part of the game works without it. If you connect:</p>
 <ul>
   <li><strong>Your Play Games profile.</strong> Google gives the app your Play Games player ID, gamer name and
@@ -97,7 +120,7 @@ data processing), so ads aren't based on your activity in other apps or websites
 described in <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use our services</a>.
 Ads appear only once you have seen a short notice in the Shop.</p>
 
-<h2>What we don't do</h2>
+<h2 id="dont">What we don't do</h2>
 <ul>
   <li>No analytics or crash-reporting tools, and no tracking of you across apps.</li>
   <li>We never sell your data, and we don't share it for targeted (cross-context behavioral) advertising.</li>
@@ -105,26 +128,37 @@ Ads appear only once you have seen a short notice in the Shop.</p>
   <li>We don't ask for your email, contacts, precise location or files.</li>
 </ul>
 
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>SudokuBits is meant for players aged 13 and over and is not directed at children. If you believe a child
 under 13 has used the leaderboards or cloud save, contact us and we will help remove the data we can reach.</p>
 
-<h2>How long data is kept</h2>
+<h2 id="retention">How long data is kept</h2>
 <ul>
   <li>On your phone: until you delete it, clear the app's data or uninstall the app.</li>
   <li>Cloud save: until you delete it in the app or in your Google account.</li>
   <li>Leaderboard scores and ad data: as long as Google keeps them under its own policies.</li>
 </ul>
 
-<h2>Your rights</h2>
-<p>Depending on where you live, you may have the right to know what data is kept about you, to get a copy,
-to correct it, to delete it, to withdraw your consent, and to complain to your data protection authority.
-Most of your data is only on your phone, where you control it. For the cloud save, use Delete cloud save in
-the app. For your Play Games profile and ad data, use your Google account settings. For anything else, email
-<a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>; we answer within 30 days.</p>
+<h2 id="rights">Your rights</h2>
+<p>Depending on where you live, you may have the right to:</p>
+<ul>
+  <li>know what personal data is kept about you and get a copy of it;</li>
+  <li>have it corrected;</li>
+  <li>have it deleted or destroyed;</li>
+  <li>have it moved to another service;</li>
+  <li>object to its collection, use or disclosure, or ask us to restrict its use;</li>
+  <li>withdraw your consent at any time (for example by disconnecting Play Games or not watching ads);</li>
+  <li>complain to your data protection authority.</li>
+</ul>
+<p><strong>How to use them:</strong> most of your data is only on your phone, where you control it. For the
+cloud save, use Delete cloud save in the app. For your Play Games profile and ad data, use your Google account
+settings. For anything else, email <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>;
+we answer within 30 days. Requests are free of charge.</p>
+<p><strong>Legal basis:</strong> providing the game you ask for (the data on your phone, and the cloud save once
+you connect) and your consent (connecting Play Games and choosing to watch an ad).</p>
 <p>Google stores and processes data on servers in many countries, including outside your own.</p>
 
-<h2>Where you live</h2>
+<h2 id="where">Where you live</h2>
 <h3>Philippines</h3>
 <p>Under the Data Privacy Act of 2012, our data protection officer is Jc Calayag
 (<a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>). You can also contact the National Privacy Commission.</p>
@@ -141,15 +175,19 @@ Commission d'accès à l'information.</p>
 (<a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>). We use data only for the purposes
 in this policy. You can also contact the Personal Data Protection Commission.</p>
 <h3>Thailand</h3>
-<p>Under the PDPA B.E. 2562 (2019), this policy is also available <a href="th/privacy.html">in Thai</a>, with your rights and
-how to use them. The data controller and contact is Jc Calayag
-(<a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>).</p>
+<p>Under the Personal Data Protection Act B.E. 2562 (2019), the data controller and contact is Jc Calayag
+(<a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>). You have every right listed under
+<a href="#rights">Your rights</a>, and you can complain to the Office of the Personal Data Protection Committee
+(PDPC). This policy is also available <a href="th/privacy.html" hreflang="th">in Thai</a>.</p>
 <h3>Japan</h3>
 <p>Under the Act on the Protection of Personal Information, we use personal information only for the purposes
-in this policy, and you may ask us to disclose, correct or stop using it. The policy is also available
-<a href="ja/privacy.html">in Japanese</a>, with the external transmission (外部送信) notice below.</p>
+in this policy (providing the game, the cloud save, leaderboards and optional ads). You may ask us to notify you
+of the purposes of use, or to disclose, correct, add to or delete, stop using or erase your retained personal
+data, or stop providing it to third parties. Requests are free of charge. This policy is also available
+<a href="ja/privacy.html" hreflang="ja">in Japanese</a>, with the external transmission (外部送信) notice below.</p>
 
 <h2 id="external-transmission">External transmission notice (Japan)</h2>
+<p>Under Japan's Telecommunications Business Act, the app sends the following information to outside services:</p>
 <div class="table-wrap" role="region" aria-labelledby="external-transmission" tabindex="0">
 <table>
   <tr><th scope="col">Sent to</th><th scope="col">What</th><th scope="col">Why</th></tr>
@@ -164,21 +202,51 @@ in this policy, and you may ask us to disclose, correct or stop using it. The po
 </table>
 </div>
 
-<h2>Changes</h2>
+<h2 id="changes">Changes</h2>
 <p>If this policy changes, we update this page and the date at the top. See also our <a href="terms.html">terms</a>.</p>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-inner">
-      <div class="footer-credit">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
         <a class="brand" href="index.html">
-          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <img src="assets/icon.svg" alt="" width="32" height="32" loading="lazy">
           <span>SudokuBits</span>
         </a>
-        <p>Made by Jc Calayag</p>
-        <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>
+        <p>Quiet ink, golden finish. A sudoku game for Android.</p>
+        <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250" loading="lazy"></a>
       </div>
+      <nav class="footer-col" aria-labelledby="footer-game">
+        <h2 id="footer-game">Game</h2>
+        <ul>
+          <li><a href="index.html#modes">Features</a></li>
+          <li><a href="index.html#try">Try a puzzle</a></li>
+          <li><a href="index.html#learn">Learn with Jc</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">Google Play</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col footer-langs-col" aria-labelledby="footer-policies">
+        <h2 id="footer-policies">Policies</h2>
+        <ul class="footer-langs">
+            <li lang="en"><span class="lang-name">English</span><a href="privacy.html" aria-current="page">Privacy Policy</a><a href="terms.html">Terms</a></li>
+            <li lang="th"><span class="lang-name">ภาษาไทย</span><a href="th/privacy.html" hreflang="th">นโยบายความเป็นส่วนตัว</a><a href="th/terms.html" hreflang="th">ข้อกำหนด</a></li>
+            <li lang="ja"><span class="lang-name">日本語</span><a href="ja/privacy.html" hreflang="ja">プライバシーポリシー</a><a href="ja/terms.html" hreflang="ja">利用規約</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a></li>
+        </ul>
+        <p>Made by Jc Calayag</p>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <p>© 2026 Jc Calayag. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+      <a class="to-top" href="#top">Back to top
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+      </a>
     </div>
   </footer>
 </body>
