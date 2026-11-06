@@ -2,152 +2,406 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SudokuBits is a quiet sudoku game for Android. Solve a daily puzzle or play offline at your own pace.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="SudokuBits is a quiet sudoku game for Android: four modes, a daily puzzle, guided lessons and a golden finish. Play offline at your own pace.">
   <title>SudokuBits — Quiet sudoku for Android</title>
-  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="SudokuBits — Quiet sudoku for Android">
+  <meta property="og:description" content="Four ways to play, a daily puzzle, guided lessons and a golden finish.">
+  <meta property="og:image" content="https://sudokubits.github.io/assets/icon-512.png">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icon-512.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="assets/icon-512.png">
+  <script>
+    (() => {
+      // The intro plays once per visit, when someone arrives from outside the site.
+      const root = document.documentElement;
+      let intro = false;
+      try {
+        const fromSite = document.referrer && new URL(document.referrer).origin === location.origin;
+        intro = !fromSite && !sessionStorage.getItem("sudokubits-intro") && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      } catch {}
+      if (intro) {
+        root.classList.add("intro");
+        setTimeout(() => root.classList.remove("intro"), 6000);
+      } else if ("onpagereveal" in window) {
+        addEventListener("pagereveal", (event) => event.viewTransition || root.classList.add("enter"), { once: true });
+      } else {
+        root.classList.add("enter");
+      }
+    })();
+  </script>
   <script src="assets/theme.js"></script>
-  <script src="assets/puzzle-demo.js" defer></script>
+  <script src="assets/site.js" defer></script>
+  <script src="assets/intro.js" defer></script>
+  <script src="assets/board.js" defer></script>
+  <script src="assets/loop.js" defer></script>
+  <script src="assets/try.js" defer></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="index.html">
-        <img src="assets/mark.svg" alt="" width="38" height="38">
+        <img class="brand-mark" src="assets/icon.svg" alt="" width="36" height="36">
         <span>SudokuBits</span>
       </a>
-      <button class="theme-toggle" type="button" aria-pressed="false" hidden>
-        <span class="theme-indicator" aria-hidden="true"></span>
-        Dark mode
-      </button>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="privacy.html">Privacy Policy</a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#modes">Features</a>
+        <a href="#try">Try a puzzle</a>
+        <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
+        <div class="nav-extra">
+          <p class="eyebrow">Policies in other languages</p>
+          <div class="langs-inline">
+            <a href="th/privacy.html" lang="th" hreflang="th">ภาษาไทย</a>
+            <a href="ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
+          </div>
+          <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250"></a>
+        </div>
       </nav>
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" hidden>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+        </button>
+        <a class="tile-button primary header-cta" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">Get the app</a>
+        <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" data-open="Open menu" data-close="Close menu" hidden>
+          <svg class="menu-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="menu-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main id="main" class="shell home-main" tabindex="-1">
-    <section class="hero" aria-labelledby="home-title">
+  <main id="main" class="home-main" tabindex="-1">
+    <section class="shell hero" aria-labelledby="home-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A quiet sudoku game for Android</p>
-        <h1 id="home-title">SudokuBits</h1>
-        <p class="hero-line">Quiet ink, golden finish.</p>
-        <p class="hero-description">Settle into a puzzle at your own pace. Place the last number in a row, column, or box and watch it turn gold.</p>
-        <a class="store-tile" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5 20 12 5 20.5Z"/></svg>
-          Get it on Google Play
-        </a>
+        <p class="eyebrow" data-enter style="--i: 0"><span class="status-dot" aria-hidden="true"></span> A quiet sudoku game for Android</p>
+        <h1 id="home-title" data-enter style="--i: 1">SudokuBits</h1>
+        <p class="hero-line" data-enter style="--i: 2">Quiet ink, <em>golden finish.</em></p>
+        <p class="hero-description" data-enter style="--i: 3">Settle into a puzzle at your own pace. Place the last number in a row, column or box and watch it turn gold.</p>
+        <div class="hero-actions" data-enter style="--i: 4">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250"></a>
+          <a class="tile-button" href="#try">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17"/></svg>
+            Try a puzzle here
+          </a>
+        </div>
+        <ul class="hero-facts" data-enter style="--i: 5">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Plays offline</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>No account needed</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>No forced ads</li>
+        </ul>
       </div>
 
-      <figure class="puzzle-sheet">
+      <figure class="puzzle-sheet" data-enter style="--i: 6">
         <div class="puzzle-heading" aria-hidden="true">
-          <span class="eyebrow">From the puzzle book</span>
+          <span class="eyebrow">Classic · Easy</span>
           <span class="puzzle-index">No. 001</span>
         </div>
-        <div class="puzzle-board" aria-hidden="true">
-          <div class="puzzle-row">
-            <span>1</span><span></span><span>2</span><span>9</span><span>5</span><span></span><span></span><span>4</span><span>8</span>
-          </div>
-          <div class="puzzle-row">
-            <span>4</span><span>8</span><span></span><span>2</span><span></span><span></span><span></span><span>6</span><span>9</span>
-          </div>
-          <div class="puzzle-row">
-            <span>6</span><span></span><span>9</span><span>1</span><span></span><span></span><span></span><span>2</span><span>7</span>
-          </div>
-          <div class="puzzle-row">
-            <span></span><span>9</span><span></span><span>5</span><span>6</span><span></span><span>7</span><span></span><span></span>
-          </div>
-          <div class="puzzle-row">
-            <span></span><span>1</span><span>3</span><span></span><span></span><span></span><span></span><span></span><span>5</span>
-          </div>
-          <div class="puzzle-row">
-            <span>2</span><span>5</span><span>6</span><span></span><span>8</span><span>7</span><span></span><span>9</span><span></span>
-          </div>
-          <div class="puzzle-row">
-            <span></span><span></span><span>1</span><span></span><span>2</span><span>5</span><span></span><span></span><span></span>
-          </div>
-          <div class="puzzle-row">
-            <span></span><span>6</span><span></span><span></span><span>3</span><span>9</span><span>2</span><span>1</span><span></span>
-          </div>
-          <div class="puzzle-row">
-            <span></span><span>2</span><span></span><span></span><span></span><span></span><span></span><span>5</span><span>3</span>
-          </div>
-        </div>
+        <div id="loop-board" role="img" aria-label="A Classic sudoku solving itself one number at a time. Each finished row, column and box shines gold."></div>
         <figcaption>
-          <span>Classic sudoku</span>
-          <button class="puzzle-toggle" type="button" hidden>
-            <svg class="play-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M8,5.6v12.8a1,1 0,0 0,1.53 0.85l10.1,-6.4a1,1 0,0 0,0 -1.7L9.53,4.75A1,1 0,0 0,8 5.6Z"/>
-            </svg>
-            <svg class="pause-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
-              <rect x="6.5" y="5" width="4" height="14" rx="1.2"/>
-              <rect x="13.5" y="5" width="4" height="14" rx="1.2"/>
-            </svg>
+          <span>The board from the app</span>
+          <button class="tile-button puzzle-toggle" type="button" data-play="Play preview" data-pause="Pause preview" hidden>
+            <svg class="play-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8,5.6v12.8a1,1 0,0 0,1.53 0.85l10.1,-6.4a1,1 0,0 0,0 -1.7L9.53,4.75A1,1 0,0 0,8 5.6Z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><rect x="6.5" y="5" width="4" height="14" rx="1.2"/><rect x="13.5" y="5" width="4" height="14" rx="1.2"/></svg>
             <span>Play preview</span>
           </button>
         </figcaption>
       </figure>
     </section>
 
-    <section class="play-notes" aria-labelledby="play-title">
-      <div>
-        <p class="eyebrow">Make time for a puzzle</p>
-        <h2 id="play-title">Sudoku at your pace</h2>
+    <section class="section" id="modes" aria-labelledby="modes-title">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Four ways to play</p>
+          <h2 id="modes-title">One grid, four kinds of puzzle</h2>
+          <p>Every mode is open from the start, each with six difficulties from Easy to Professional.</p>
+        </div>
+        <div class="mode-grid">
+          <article class="card mode-card" data-reveal style="--i: 0">
+            <div class="mini" aria-hidden="true"><svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" class="mini-svg"><path class="m-thin" d="M10 0V90M0 10H90M20 0V90M0 20H90M40 0V90M0 40H90M50 0V90M0 50H90M70 0V90M0 70H90M80 0V90M0 80H90"/><path class="m-thick" d="M30 0V90M0 30H90M60 0V90M0 60H90"/><text class="m-text" x="5" y="7.4" font-size="6.2">1</text><text class="m-text" x="25" y="7.4" font-size="6.2">2</text><text class="m-text" x="35" y="7.4" font-size="6.2">9</text><text class="m-text" x="85" y="7.4" font-size="6.2">8</text><text class="m-text" x="5" y="17.4" font-size="6.2">4</text><text class="m-text" x="35" y="17.4" font-size="6.2">2</text><text class="m-text" x="85" y="17.4" font-size="6.2">9</text><text class="m-text" x="5" y="27.4" font-size="6.2">6</text><text class="m-text" x="25" y="27.4" font-size="6.2">9</text><text class="m-text" x="35" y="27.4" font-size="6.2">1</text><text class="m-text" x="85" y="27.4" font-size="6.2">7</text><text class="m-text" x="35" y="37.4" font-size="6.2">5</text><text class="m-text" x="65" y="37.4" font-size="6.2">7</text><text class="m-text" x="25" y="47.4" font-size="6.2">3</text><text class="m-text" x="85" y="47.4" font-size="6.2">5</text><text class="m-text" x="5" y="57.4" font-size="6.2">2</text><text class="m-text" x="25" y="57.4" font-size="6.2">6</text><text class="m-text" x="55" y="57.4" font-size="6.2">7</text><text class="m-text" x="25" y="67.4" font-size="6.2">1</text><text class="m-text" x="55" y="67.4" font-size="6.2">5</text><text class="m-text" x="55" y="77.4" font-size="6.2">9</text><text class="m-text" x="65" y="77.4" font-size="6.2">2</text><text class="m-text" x="85" y="87.4" font-size="6.2">3</text><rect class="m-gold" x="0" y="40" width="90" height="10"/></svg></div>
+            <h3><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.5,4h11a2.5,2.5 0,0 1,2.5 2.5v11a2.5,2.5 0,0 1,-2.5 2.5h-11a2.5,2.5 0,0 1,-2.5 -2.5v-11a2.5,2.5 0,0 1,2.5 -2.5zM9.33,4v16M14.67,4v16M4,9.33h16M4,14.67h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Classic</h3>
+            <p>The familiar rules: every row, column and 3×3 box holds the numbers 1 to 9.</p>
+          </article>
+          <article class="card mode-card" data-reveal style="--i: 1">
+            <div class="mini" aria-hidden="true"><svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" class="mini-svg"><rect class="m-region" x="0" y="0" width="10" height="10"/><rect class="m-region" x="80" y="0" width="10" height="10"/><rect class="m-region" x="10" y="10" width="10" height="10"/><rect class="m-region" x="70" y="10" width="10" height="10"/><rect class="m-region" x="20" y="20" width="10" height="10"/><rect class="m-region" x="60" y="20" width="10" height="10"/><rect class="m-region" x="30" y="30" width="10" height="10"/><rect class="m-region" x="50" y="30" width="10" height="10"/><rect class="m-region" x="40" y="40" width="10" height="10"/><rect class="m-region" x="50" y="50" width="10" height="10"/><rect class="m-region" x="30" y="50" width="10" height="10"/><rect class="m-region" x="60" y="60" width="10" height="10"/><rect class="m-region" x="20" y="60" width="10" height="10"/><rect class="m-region" x="70" y="70" width="10" height="10"/><rect class="m-region" x="10" y="70" width="10" height="10"/><rect class="m-region" x="80" y="80" width="10" height="10"/><rect class="m-region" x="0" y="80" width="10" height="10"/><path class="m-diag" d="M2 2 88 88M88 2 2 88"/><path class="m-thin" d="M10 0V90M0 10H90M20 0V90M0 20H90M40 0V90M0 40H90M50 0V90M0 50H90M70 0V90M0 70H90M80 0V90M0 80H90"/><path class="m-thick" d="M30 0V90M0 30H90M60 0V90M0 60H90"/><text class="m-text" x="5" y="7.4" font-size="6.2">4</text><text class="m-text" x="15" y="17.4" font-size="6.2">7</text><text class="m-text" x="35" y="37.4" font-size="6.2">2</text><text class="m-text" x="45" y="47.4" font-size="6.2">5</text><text class="m-text" x="65" y="67.4" font-size="6.2">9</text><text class="m-text" x="85" y="87.4" font-size="6.2">1</text><text class="m-text" x="85" y="7.4" font-size="6.2">6</text><text class="m-text" x="65" y="27.4" font-size="6.2">3</text><text class="m-text" x="25" y="67.4" font-size="6.2">8</text><text class="m-text" x="5" y="87.4" font-size="6.2">2</text><text class="m-text" x="45" y="7.4" font-size="6.2">9</text><text class="m-text" x="5" y="47.4" font-size="6.2">3</text><text class="m-text" x="85" y="47.4" font-size="6.2">7</text><text class="m-text" x="45" y="87.4" font-size="6.2">6</text><text class="m-text" x="35" y="27.4" font-size="6.2">1</text><text class="m-text" x="65" y="57.4" font-size="6.2">4</text></svg></div>
+            <h3><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.5,4h11a2.5,2.5 0,0 1,2.5 2.5v11a2.5,2.5 0,0 1,-2.5 2.5h-11a2.5,2.5 0,0 1,-2.5 -2.5v-11a2.5,2.5 0,0 1,2.5 -2.5zM6.5,6.5l11,11M17.5,6.5l-11,11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Diagonal</h3>
+            <p>Both long diagonals hold 1 to 9 as well, so every placement counts twice.</p>
+          </article>
+          <article class="card mode-card" data-reveal style="--i: 2">
+            <div class="mini" aria-hidden="true"><svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" class="mini-svg"><path class="m-thin" d="M10 0V90M0 10H90M20 0V90M0 20H90M40 0V90M0 40H90M50 0V90M0 50H90M70 0V90M0 70H90M80 0V90M0 80H90"/><path class="m-thick" d="M30 0V90M0 30H90M60 0V90M0 60H90"/><rect class="m-cage" x="1.3" y="1.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="2.2" y="4.2">8</text><rect class="m-cage" x="21.3" y="1.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="22.2" y="4.2">13</text><rect class="m-cage" x="1.3" y="11.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="2.2" y="14.2">9</text><rect class="m-cage" x="11.3" y="11.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="12.2" y="14.2">15</text><rect class="m-cage" x="31.3" y="1.3" width="27.4" height="7.4" rx="1.4"/><text class="m-sum" x="32.2" y="4.2">12</text><rect class="m-cage" x="31.3" y="11.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="32.2" y="14.2">7</text><rect class="m-cage" x="61.3" y="1.3" width="17.4" height="17.4" rx="1.4"/><text class="m-sum" x="62.2" y="4.2">20</text><rect class="m-cage" x="81.3" y="1.3" width="7.4" height="27.4" rx="1.4"/><text class="m-sum" x="82.2" y="4.2">17</text><rect class="m-cage" x="21.3" y="21.3" width="27.4" height="7.4" rx="1.4"/><text class="m-sum" x="22.2" y="24.2">16</text><rect class="m-cage" x="51.3" y="11.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="52.2" y="14.2">10</text><rect class="m-cage" x="61.3" y="21.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="62.2" y="24.2">6</text><rect class="m-cage" x="1.3" y="31.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="2.2" y="34.2">11</text><rect class="m-cage" x="11.3" y="31.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="12.2" y="34.2">9</text><rect class="m-cage" x="11.3" y="41.3" width="17.4" height="17.4" rx="1.4"/><text class="m-sum" x="12.2" y="44.2">18</text><rect class="m-cage" x="31.3" y="31.3" width="7.4" height="27.4" rx="1.4"/><text class="m-sum" x="32.2" y="34.2">15</text><rect class="m-cage" x="41.3" y="31.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="42.2" y="34.2">13</text><rect class="m-cage" x="41.3" y="41.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="42.2" y="44.2">9</text><rect class="m-cage" x="41.3" y="51.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="42.2" y="54.2">8</text><rect class="m-cage" x="61.3" y="31.3" width="27.4" height="7.4" rx="1.4"/><text class="m-sum" x="62.2" y="34.2">14</text><rect class="m-cage" x="61.3" y="41.3" width="17.4" height="17.4" rx="1.4"/><text class="m-sum" x="62.2" y="44.2">22</text><rect class="m-cage" x="81.3" y="41.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="82.2" y="44.2">7</text><rect class="m-cage" x="1.3" y="51.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="2.2" y="54.2">12</text><rect class="m-cage" x="11.3" y="61.3" width="27.4" height="7.4" rx="1.4"/><text class="m-sum" x="12.2" y="64.2">10</text><rect class="m-cage" x="1.3" y="71.3" width="17.4" height="17.4" rx="1.4"/><text class="m-sum" x="2.2" y="74.2">19</text><rect class="m-cage" x="41.3" y="61.3" width="7.4" height="17.4" rx="1.4"/><text class="m-sum" x="42.2" y="64.2">11</text><rect class="m-cage" x="51.3" y="61.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="52.2" y="64.2">15</text><rect class="m-cage" x="21.3" y="71.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="22.2" y="74.2">5</text><rect class="m-cage" x="21.3" y="81.3" width="27.4" height="7.4" rx="1.4"/><text class="m-sum" x="22.2" y="84.2">16</text><rect class="m-cage" x="51.3" y="71.3" width="17.4" height="17.4" rx="1.4"/><text class="m-sum" x="52.2" y="74.2">21</text><rect class="m-cage" x="71.3" y="61.3" width="17.4" height="17.4" rx="1.4"/><text class="m-sum" x="72.2" y="64.2">17</text><rect class="m-cage" x="71.3" y="81.3" width="17.4" height="7.4" rx="1.4"/><text class="m-sum" x="72.2" y="84.2">13</text><text class="m-text" x="45" y="47.4" font-size="6.2">5</text><text class="m-text" x="65" y="17.4" font-size="6.2">9</text><text class="m-text" x="25" y="77.4" font-size="6.2">3</text></svg></div>
+            <h3><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4,8.5v-2a2.5,2.5 0,0 1,2.5 -2.5h2M15.5,4h2a2.5,2.5 0,0 1,2.5 2.5v2M20,15.5v2a2.5,2.5 0,0 1,-2.5 2.5h-2M8.5,20h-2a2.5,2.5 0,0 1,-2.5 -2.5v-2M11,4h2M11,20h2M4,11v2M20,11v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.2,8.2m-1.3,0a1.3,1.3 0,1 0,2.6 0a1.3,1.3 0,1 0,-2.6 0" fill="currentColor"/></svg>Killer</h3>
+            <p>Follow the dashed cages and their sums. No number repeats inside a cage.</p>
+          </article>
+          <article class="card mode-card" data-reveal style="--i: 3">
+            <div class="mini" aria-hidden="true"><svg viewBox="-1 -1 92 92" xmlns="http://www.w3.org/2000/svg" class="mini-svg mini-samurai"><rect class="m-sheet" x="0" y="0" width="38.57" height="38.57"/><path class="m-thin" d="M4.29 0V38.57M0 4.29H38.57M8.57 0V38.57M0 8.57H38.57M17.14 0V38.57M0 17.14H38.57M21.43 0V38.57M0 21.43H38.57M30 0V38.57M0 30H38.57M34.28 0V38.57M0 34.28H38.57"/><path class="m-thick" d="M12.86 0V38.57M0 12.86H38.57M25.71 0V38.57M0 25.71H38.57"/><rect class="m-frame" x="0" y="0" width="38.57" height="38.57"/><rect class="m-sheet" x="51.43" y="0" width="38.57" height="38.57"/><path class="m-thin" d="M55.72 0V38.57M51.43 4.29H90M60 0V38.57M51.43 8.57H90M68.57 0V38.57M51.43 17.14H90M72.86 0V38.57M51.43 21.43H90M81.43 0V38.57M51.43 30H90M85.71 0V38.57M51.43 34.28H90"/><path class="m-thick" d="M64.29 0V38.57M51.43 12.86H90M77.14 0V38.57M51.43 25.71H90"/><rect class="m-frame" x="51.43" y="0" width="38.57" height="38.57"/><rect class="m-sheet" x="0" y="51.43" width="38.57" height="38.57"/><path class="m-thin" d="M4.29 51.43V90M0 55.72H38.57M8.57 51.43V90M0 60H38.57M17.14 51.43V90M0 68.57H38.57M21.43 51.43V90M0 72.86H38.57M30 51.43V90M0 81.43H38.57M34.28 51.43V90M0 85.71H38.57"/><path class="m-thick" d="M12.86 51.43V90M0 64.29H38.57M25.71 51.43V90M0 77.14H38.57"/><rect class="m-frame" x="0" y="51.43" width="38.57" height="38.57"/><rect class="m-sheet" x="51.43" y="51.43" width="38.57" height="38.57"/><path class="m-thin" d="M55.72 51.43V90M51.43 55.72H90M60 51.43V90M51.43 60H90M68.57 51.43V90M51.43 68.57H90M72.86 51.43V90M51.43 72.86H90M81.43 51.43V90M51.43 81.43H90M85.71 51.43V90M51.43 85.71H90"/><path class="m-thick" d="M64.29 51.43V90M51.43 64.29H90M77.14 51.43V90M51.43 77.14H90"/><rect class="m-frame" x="51.43" y="51.43" width="38.57" height="38.57"/><rect class="m-sheet m-center" x="25.71" y="25.71" width="38.57" height="38.57"/><path class="m-thin" d="M30 25.71V64.28M25.71 30H64.28M34.28 25.71V64.28M25.71 34.28H64.28M42.85 25.71V64.28M25.71 42.85H64.28M47.14 25.71V64.28M25.71 47.14H64.28M55.71 25.71V64.28M25.71 55.71H64.28M59.99 25.71V64.28M25.71 59.99H64.28"/><path class="m-thick" d="M38.57 25.71V64.28M25.71 38.57H64.28M51.42 25.71V64.28M25.71 51.42H64.28"/><rect class="m-frame" x="25.71" y="25.71" width="38.57" height="38.57"/><rect class="m-shared" x="25.71" y="25.71" width="12.86" height="12.86"/><rect class="m-shared" x="51.43" y="25.71" width="12.86" height="12.86"/><rect class="m-shared" x="25.71" y="51.43" width="12.86" height="12.86"/><rect class="m-shared" x="51.43" y="51.43" width="12.86" height="12.86"/></svg></div>
+            <h3><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4.5,3h4a1.5,1.5 0,0 1,1.5 1.5v4a1.5,1.5 0,0 1,-1.5 1.5h-4a1.5,1.5 0,0 1,-1.5 -1.5v-4a1.5,1.5 0,0 1,1.5 -1.5zM15.5,3h4a1.5,1.5 0,0 1,1.5 1.5v4a1.5,1.5 0,0 1,-1.5 1.5h-4a1.5,1.5 0,0 1,-1.5 -1.5v-4a1.5,1.5 0,0 1,1.5 -1.5zM4.5,14h4a1.5,1.5 0,0 1,1.5 1.5v4a1.5,1.5 0,0 1,-1.5 1.5h-4a1.5,1.5 0,0 1,-1.5 -1.5v-4a1.5,1.5 0,0 1,1.5 -1.5zM15.5,14h4a1.5,1.5 0,0 1,1.5 1.5v4a1.5,1.5 0,0 1,-1.5 1.5h-4a1.5,1.5 0,0 1,-1.5 -1.5v-4a1.5,1.5 0,0 1,1.5 -1.5zM10,8.5h4a1.5,1.5 0,0 1,1.5 1.5v4a1.5,1.5 0,0 1,-1.5 1.5h-4a1.5,1.5 0,0 1,-1.5 -1.5v-4a1.5,1.5 0,0 1,1.5 -1.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Samurai</h3>
+            <p>Five overlapping grids: each corner grid shares one box with the center grid.</p>
+          </article>
+        </div>
+        <p class="mode-note" data-reveal>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 14.6 9l5.9.6-4.4 4 1.3 5.9L12 16.5l-5.4 3 1.3-5.9-4.4-4L9.4 9Z"/></svg>
+          Each puzzle has exactly one solution and can be solved with logic. No guessing needed.
+        </p>
       </div>
-      <dl class="play-list">
-        <div>
-          <dt>
-            <span class="note-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 4v16m6-16v16M4 9h16M4 15h16"/></svg>
-            </span>
-            Play offline
-          </dt>
-          <dd>Open a puzzle anywhere. SudokuBits saves your place on your phone so you can pick it up later.</dd>
-        </div>
-        <div>
-          <dt>
-            <span class="note-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-12 5 2 2 4-4"/></svg>
-            </span>
-            A new puzzle each day
-          </dt>
-          <dd>Make the daily Classic puzzle part of your routine and mark the day with a solve.</dd>
-        </div>
-      </dl>
     </section>
+
+    <section class="section" id="try" aria-labelledby="try-title">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Try it here</p>
+          <h2 id="try-title">Solve an easy puzzle</h2>
+          <p>This is Classic Easy No. 002 from the app, with the same rules: three hearts, up to three hints, notes and unlimited undo.</p>
+        </div>
+        <div class="try-layout">
+          <div class="try-board" data-reveal>
+            <div id="try-board" role="group" aria-label="Sudoku board, Classic Easy" aria-describedby="try-help"></div>
+          </div>
+          <div class="try-panel" data-reveal style="--i: 1">
+            <div class="try-status">
+              <span>Time <strong id="try-time">0:00</strong></span>
+              <span class="hearts" id="try-hearts" role="img" aria-label="3 of 3 hearts left">
+                <span class="heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg><svg class="fill" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg></span>
+                <span class="heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg><svg class="fill" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg></span>
+                <span class="heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg><svg class="fill" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg></span>
+              </span>
+              <span>Hints <strong id="try-hints">3</strong></span>
+            </div>
+            <div class="pad" id="try-pad" role="group" aria-label="Numbers"></div>
+            <div class="tools">
+              <button class="tile-button tool" id="try-undo" type="button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+                Undo
+              </button>
+              <button class="tile-button tool" id="try-erase" type="button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 21-4.3-4.3a1 1 0 0 1 0-1.4l10-10a1 1 0 0 1 1.4 0l5.6 5.6a1 1 0 0 1 0 1.4L13 19"/><path d="M22 21H7M5 11l9 9"/></svg>
+                Erase
+              </button>
+              <button class="tile-button tool" id="try-notes" type="button" aria-pressed="false">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                Notes
+              </button>
+              <button class="tile-button tool" id="try-hint" type="button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg>
+                Hint
+              </button>
+            </div>
+            <div class="try-result" id="try-result" hidden>
+              <h3>Solved!</h3>
+              <p></p>
+              <div class="row">
+                <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250"></a>
+                <button class="tile-button try-again" type="button">Play again</button>
+              </div>
+            </div>
+            <div class="try-foot">
+              <p class="try-hint" id="try-help">Pick a cell, then a number. Keys: arrows, 1–9, Delete, N for notes, Ctrl+Z to undo.</p>
+              <button class="tile-button" id="try-sound" type="button" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+                Sound
+              </button>
+              <button class="tile-button" id="try-restart" type="button">Restart</button>
+            </div>
+            <p class="visually-hidden" id="try-live" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learn" aria-labelledby="learn-title">
+      <div class="shell learn">
+        <div class="jc-card" data-reveal>
+          <p class="speech">Look for a row, column or box with just one number missing.</p>
+          <img src="assets/art/jc-point.svg" alt="Jc, the eagle guide, pointing at the board" width="240" height="240">
+        </div>
+        <div>
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">Learn with Jc</p>
+            <h2 id="learn-title">Your eagle guide to every technique</h2>
+            <p>Jc walks you through the rules of each mode, then teaches twelve techniques from notes and pairs to X-Wing and Swordfish.</p>
+          </div>
+          <ul class="learn-points" data-reveal style="--i: 1">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.5"/></svg><span><strong>Watch the idea on the board.</strong> Each lesson shows the technique step by step.</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span><strong>Then try it yourself.</strong> Practice on a real board until it clicks.</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m8 12 3 3 5-6"/></svg><span><strong>Interactive tutorials</strong> introduce the rules of Classic, Diagonal, Killer and Samurai.</span></li>
+          </ul>
+          <ul class="chips" data-reveal style="--i: 2" aria-label="The twelve lessons">
+            <li>Full notes</li><li>Pointing</li><li>Claiming</li><li>Naked pair</li><li>Hidden pair</li><li>Triples</li>
+            <li>X-Wing</li><li>Swordfish</li><li>XY-Wing</li><li>XYZ-Wing</li><li>Simple coloring</li><li>Quads</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="daily" aria-labelledby="daily-title">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Make time for a puzzle</p>
+          <h2 id="daily-title">Something new every day</h2>
+          <p>Come back for the daily puzzle, race the clock, or see how far you can climb.</p>
+        </div>
+        <div class="day-grid">
+          <article class="card" data-reveal style="--i: 0">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-12 5 2 2 4-4"/></svg></span>
+            <h3>Daily puzzle</h3>
+            <p>A new Classic puzzle each day. Solve it to start a streak and follow your seals on the calendar.</p>
+            <div class="week" aria-hidden="true"><span class="sealed">M</span><span class="sealed">T</span><span class="sealed">W</span><span class="sealed">T</span><span class="today">F</span><span>S</span><span>S</span></div>
+          </article>
+          <article class="card" data-reveal style="--i: 1">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9.5 2.5h5"/></svg></span>
+            <h3>Time challenge</h3>
+            <p>Beat the clock. No hints. Three hearts, as always.</p>
+            <p class="clock-face" aria-hidden="true">04:59<small>left</small></p>
+          </article>
+          <article class="card" data-reveal style="--i: 2">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 20 6-10 4 6 3-4 5 8Z"/><path d="M9 10V4l4 2-4 2"/></svg></span>
+            <h3>Master Trials</h3>
+            <p>Climb 100 levels with 5 hearts and 10 hints for the whole climb. How far can you go?</p>
+            <div class="climb" aria-hidden="true"><span style="height: 20%"></span><span style="height: 32%"></span><span style="height: 44%"></span><span style="height: 56%"></span><span style="height: 68%"></span><span style="height: 82%"></span><span style="height: 100%"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="grow" aria-labelledby="grow-title">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Grow as you solve</p>
+          <h2 id="grow-title">Climb the ranks, make it yours</h2>
+          <p>Earn EXP with every solve, unlock harder puzzles when you are ready, and collect what you earn along the way.</p>
+        </div>
+        <div class="grow">
+          <article class="card wide" data-reveal style="--i: 0">
+            <h3>Six difficulties</h3>
+            <p>Start at Easy. As you reach new ranks, harder difficulties open, all the way to Professional.</p>
+            <ol class="ladder">
+              <li style="--i: 0">Easy</li><li style="--i: 1">Medium</li><li style="--i: 2">Hard</li><li style="--i: 3">Very Hard</li><li style="--i: 4">Expert</li><li style="--i: 5">Professional</li>
+            </ol>
+          </article>
+          <article class="card" data-reveal style="--i: 1">
+            <h3>Eleven ranks and badges</h3>
+            <p>Rise from Beginner to Guru, and collect badges for steady hands, long streaks and swift solves.</p>
+            <ul class="rank-strip" aria-label="Ranks from Beginner to Guru">
+              <li><img src="assets/art/rank-beginner.svg" alt="Beginner" width="44" height="44"></li>
+              <li><img src="assets/art/rank-novice.svg" alt="Novice" width="44" height="44"></li>
+              <li><img src="assets/art/rank-apprentice.svg" alt="Apprentice" width="44" height="44"></li>
+              <li><img src="assets/art/rank-solver.svg" alt="Solver" width="44" height="44"></li>
+              <li><img src="assets/art/rank-thinker.svg" alt="Thinker" width="44" height="44"></li>
+              <li><img src="assets/art/rank-strategist.svg" alt="Strategist" width="44" height="44"></li>
+              <li><img src="assets/art/rank-tactician.svg" alt="Tactician" width="44" height="44"></li>
+              <li><img src="assets/art/rank-master.svg" alt="Master" width="44" height="44"></li>
+              <li><img src="assets/art/rank-grandmaster.svg" alt="Grandmaster" width="44" height="44"></li>
+              <li><img src="assets/art/rank-sage.svg" alt="Sage" width="44" height="44"></li>
+              <li><img src="assets/art/rank-guru.svg" alt="Guru" width="44" height="44"></li>
+            </ul>
+          </article>
+          <article class="card" data-reveal style="--i: 2">
+            <h3>Creatures, styles and looks</h3>
+            <p>Spend the coins you earn by playing on creature avatars, profile styles and board looks such as Kintsugi. They change how the app looks, never how it plays.</p>
+            <ul class="avatar-strip" aria-label="Some of the creature avatars">
+              <li><img src="assets/art/avatar-fox.svg" alt="Fox" width="54" height="54"></li>
+              <li><img src="assets/art/avatar-owl.svg" alt="Owl" width="54" height="54"></li>
+              <li><img src="assets/art/avatar-koi.svg" alt="Koi" width="54" height="54"></li>
+              <li><img src="assets/art/avatar-tanuki.svg" alt="Tanuki" width="54" height="54"></li>
+              <li><img src="assets/art/avatar-rabbit.svg" alt="Rabbit" width="54" height="54"></li>
+              <li><img src="assets/art/avatar-penguin.svg" alt="Penguin" width="54" height="54"></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="calm" aria-labelledby="calm-title">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Calm and fair</p>
+          <h2 id="calm-title">Made to be easy to come back to</h2>
+        </div>
+        <dl class="calm-grid" data-reveal style="--i: 1">
+          <div>
+            <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5.2-2.8M19 13a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.2-2.6M22 8.8a15 15 0 0 0-11-3.8M12 20h.01"/></svg>Plays offline</dt>
+            <dd>No account needed, and your game saves as you play. Connect Google Play Games if you want cloud saves and leaderboards.</dd>
+          </div>
+          <div>
+            <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Help when you want it</dt>
+            <dd>Notes, unlimited undo and up to three hints in regular puzzles.</dd>
+          </div>
+          <div>
+            <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></svg>Three hearts</dt>
+            <dd>Careful choices count. A wrong number is gentle: one soft red ring, no buzzer.</dd>
+          </div>
+          <div>
+            <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor"/></svg>Easy on the eyes</dt>
+            <dd>Light or dark mode, and number highlights you can adjust to suit you.</dd>
+          </div>
+          <div>
+            <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Your data stays yours</dt>
+            <dd>No analytics and no data sold. Ads are optional and never personalized. <a href="privacy.html">Privacy policy</a></dd>
+          </div>
+          <div>
+            <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>Three languages</dt>
+            <dd>Play in English, Thai or Japanese.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="shell">
+      <section class="cta-band" aria-labelledby="cta-title" data-reveal>
+        <img class="cta-icon" src="assets/icon.svg" alt="" width="96" height="96">
+        <div>
+          <h2 id="cta-title">Settle into a puzzle</h2>
+          <p>SudokuBits is free on Google Play for Android.</p>
+        </div>
+        <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250"></a>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-inner">
-      <div class="footer-credit">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
         <a class="brand" href="index.html">
-          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <img src="assets/icon.svg" alt="" width="32" height="32" loading="lazy">
           <span>SudokuBits</span>
         </a>
-        <p>Made by Jc Calayag</p>
-        <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a>
+        <p>Quiet ink, golden finish. A sudoku game for Android.</p>
+        <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250" loading="lazy"></a>
       </div>
-      <nav class="footer-languages" aria-label="Legal documents by language">
-        <div lang="en">
-          <p>English</p>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms</a>
-        </div>
-        <div lang="th">
-          <p>ภาษาไทย</p>
-          <a href="th/privacy.html" hreflang="th">นโยบายความเป็นส่วนตัว</a>
-          <a href="th/terms.html" hreflang="th">ข้อกำหนด</a>
-        </div>
-        <div lang="ja">
-          <p>日本語</p>
-          <a href="ja/privacy.html" hreflang="ja">プライバシーポリシー</a>
-          <a href="ja/terms.html" hreflang="ja">利用規約</a>
-        </div>
+      <nav class="footer-col" aria-labelledby="footer-game">
+        <h2 id="footer-game">Game</h2>
+        <ul>
+          <li><a href="#modes">Features</a></li>
+          <li><a href="#try">Try a puzzle</a></li>
+          <li><a href="#learn">Learn with Jc</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">Google Play</a></li>
+        </ul>
       </nav>
+      <nav class="footer-col footer-langs-col" aria-labelledby="footer-policies">
+        <h2 id="footer-policies">Policies</h2>
+        <ul class="footer-langs">
+            <li lang="en"><span class="lang-name">English</span><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></li>
+            <li lang="th"><span class="lang-name">ภาษาไทย</span><a href="th/privacy.html" hreflang="th">นโยบายความเป็นส่วนตัว</a><a href="th/terms.html" hreflang="th">ข้อกำหนด</a></li>
+            <li lang="ja"><span class="lang-name">日本語</span><a href="ja/privacy.html" hreflang="ja">プライバシーポリシー</a><a href="ja/terms.html" hreflang="ja">利用規約</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a></li>
+        </ul>
+        <p>Made by Jc Calayag</p>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <p>© 2026 Jc Calayag. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+      <a class="to-top" href="#top">Back to top
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+      </a>
     </div>
   </footer>
 </body>
