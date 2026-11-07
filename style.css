@@ -30,11 +30,12 @@
   --error: #b3261e;
   --header-bg: rgb(245 241 232 / 0.82);
 
+  /* Board lines (G157): cell lines ≥ 3:1 on the board and ≥ 2.5:1 on every tint; box lines heavier. */
   --board-bg: #fffdf8;
   --board-region: #ece5d6;
   --board-same: #dae3ec;
   --board-selected: #c3d3e2;
-  --board-thin: #d2c9b8;
+  --board-thin: #948b7d;
   --board-thick: #3a3f45;
   --board-player: #2e5a86;
   --board-glow: rgb(227 168 58 / 0.5);
@@ -79,8 +80,8 @@
   --board-region: #252c35;
   --board-same: #263a50;
   --board-selected: #2e4560;
-  --board-thin: #3a424b;
-  --board-thick: #8a929b;
+  --board-thin: #737b85;
+  --board-thick: #a3abb4;
   --board-player: #9ec2ea;
   --board-glow: rgb(237 185 79 / 0.35);
 }
@@ -379,18 +380,6 @@ h1, h2, .display {
   letter-spacing: -0.045em;
   line-height: 1;
 }
-
-.hero-line {
-  margin: 1rem 0 0;
-  color: var(--ink);
-  font: 600 clamp(1.45rem, 3vw, 2.5rem)/1.16 var(--display-font);
-  font-optical-sizing: none;
-  font-variation-settings: "opsz" 36, "SOFT" 100;
-  letter-spacing: -0.025em;
-}
-
-.hero-line em { color: var(--gold-edge); font-style: normal; }
-:root[data-theme="dark"] .hero-line em { color: var(--gold); }
 
 .hero-description {
   max-width: 34ch;
@@ -696,7 +685,7 @@ button.cell:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px;
 
 .mini-svg { fill: none; stroke-linecap: square; }
 .mini-svg .m-thin { stroke: var(--board-thin); stroke-width: 0.5; }
-.mini-svg .m-thick { stroke: var(--board-thick); stroke-width: 1.1; }
+.mini-svg .m-thick { stroke: var(--board-thick); stroke-width: 1; }
 .mini-svg .m-text { fill: var(--text); stroke: none; font: 650 6px var(--body-font); text-anchor: middle; }
 .mini-svg .m-gold { fill: var(--board-glow); }
 .mini-svg .m-region { fill: var(--board-region); }
