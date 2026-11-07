@@ -381,18 +381,6 @@ h1, h2, .display {
   line-height: 1;
 }
 
-.hero-line {
-  margin: 1rem 0 0;
-  color: var(--ink);
-  font: 600 clamp(1.45rem, 3vw, 2.5rem)/1.16 var(--display-font);
-  font-optical-sizing: none;
-  font-variation-settings: "opsz" 36, "SOFT" 100;
-  letter-spacing: -0.025em;
-}
-
-.hero-line em { color: var(--gold-edge); font-style: normal; }
-:root[data-theme="dark"] .hero-line em { color: var(--gold); }
-
 .hero-description {
   max-width: 34ch;
   margin: 1.15rem 0 1.5rem;
