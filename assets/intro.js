@@ -53,7 +53,7 @@
         <div class="intro-logo">${markup}</div>
         <p class="intro-name">SudokuBits</p>
       </div>
-      <div class="intro-credit"><span>${t.introBy ?? "Developed by"}</span><strong>Jc Calayag</strong></div>
+      <div class="intro-credit"><span>${t.introBy ?? "Developed by"}</span><strong>J.C. Calayag</strong></div>
       <span class="intro-skip">${t.introSkip ?? "Tap to skip"}</span>`;
     document.body.append(overlay);
 
