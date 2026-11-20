@@ -319,11 +319,11 @@ h1, h2, .display {
 .menu-toggle .menu-close, .menu-toggle[aria-expanded="true"] .menu-open { display: none; }
 .menu-toggle[aria-expanded="true"] .menu-close { display: block; }
 
-@media (max-width: 52rem) {
+@media (max-width: 64rem) {
   .header-cta { display: none; }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 54rem) {
   .js .menu-toggle { display: inline-grid; }
   .js .header-actions { margin-inline-start: auto; }
 
@@ -349,7 +349,7 @@ h1, h2, .display {
   .site-nav:not(.js *) { margin-inline-start: -0.5rem; }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 54rem) {
   html:not(.js) .header-inner { flex-wrap: wrap; padding-block: 0.4rem; }
   html:not(.js) .site-nav { order: 3; width: 100%; margin-inline-start: -0.6rem; }
 }
@@ -1188,6 +1188,85 @@ button.cell:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px;
 .table-wrap :is(th, td) { padding: 0.65rem 0.75rem; text-align: start; vertical-align: top; }
 .table-wrap th { background: var(--surface); color: var(--ink); }
 .table-wrap td { border-block-start: 1px solid var(--line); }
+
+/* ---------- Help and FAQ: the app's FaqScreen (G147) ---------- */
+
+.faq-lead { max-width: 40rem; margin: 0; color: var(--muted); font-size: 1.06rem; }
+
+.faq-topics ul { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+
+.faq-topics a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--sheet);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color var(--quick) var(--ease-standard);
+}
+
+.faq-topics a:hover { background: var(--surface); }
+
+.faq-group h2 { margin: 2.5rem 0 0.75rem; font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.25; }
+
+/* A question is a tile: a 1px ring on surface; open, the ring turns 2px ink on the board's paper. */
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--surface-low);
+  box-shadow: 0 3px 0 var(--line);
+  transition: background-color var(--quick) var(--ease-standard), border-color var(--quick) var(--ease-standard);
+}
+
+.faq-item + .faq-item { margin-block-start: 0.625rem; }
+.faq-item[open] { border-color: var(--ink); background: var(--board-bg); box-shadow: 0 0 0 1px var(--ink), 0 3px 0 var(--line); }
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border-radius: inherit;
+  color: var(--text);
+  font-weight: 650;
+  line-height: 1.4;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--ink); }
+.faq-item summary span { flex: 1; min-width: 0; }
+
+.faq-chevron { flex: none; color: var(--ink); transform: rotate(90deg); transition: transform var(--medium) var(--ease-standard); }
+.faq-item[open] .faq-chevron { transform: rotate(-90deg); }
+
+.faq-item p { margin: 0; padding: 0 1rem 1rem; color: var(--muted); line-height: 1.5; }
+.faq-item[open] p { animation: fade-in var(--short) var(--ease-arrive) both; }
+
+/* The answer's height eases open and shut where the browser can animate it. */
+@supports selector(::details-content) {
+  .faq-item { interpolate-size: allow-keywords; }
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--medium) var(--ease-standard), content-visibility var(--medium) allow-discrete;
+  }
+  .faq-item[open]::details-content { block-size: auto; }
+}
+
+.faq-contact { margin-block-start: 2.5rem; }
+.faq-contact p { margin: 0; }
+
+/* The home page's few questions */
+.faq-home { max-width: 48rem; }
+.faq-more { margin-block-start: 1.5rem; }
 
 /* ---------- Intro (assets/intro.js): the app's intro, then the logo glides into the header ---------- */
 

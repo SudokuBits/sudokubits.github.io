@@ -37,7 +37,7 @@
       document.addEventListener("click", (event) => {
         if (nav.classList.contains("is-open") && !header.contains(event.target)) setOpen(false);
       });
-      matchMedia("(min-width: 40.01rem)").addEventListener("change", ({ matches }) => {
+      matchMedia("(min-width: 54.01rem)").addEventListener("change", ({ matches }) => {
         if (matches) setOpen(false);
       });
     }
@@ -56,6 +56,15 @@
       }, { rootMargin: "-45% 0px -50% 0px" });
       sections.forEach((section) => observer.observe(section));
     }
+
+    // ---- Help and FAQ: a link to a question (faq.html#wood) opens it. ----
+    const openLinkedQuestion = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id && document.getElementById(id);
+      if (target instanceof HTMLDetailsElement) target.open = true;
+    };
+    openLinkedQuestion();
+    addEventListener("hashchange", openLinkedQuestion);
 
     // ---- Sections are set down once as they scroll into view. ----
     const pieces = document.querySelectorAll("[data-reveal]");
