@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="เรื่อง EXP คะแนน เหรียญ การเล่นต่อเนื่อง และการบันทึกออนไลน์ อธิบายแบบเข้าใจง่าย">
+  <title>วิธีใช้และคำถามที่พบบ่อยของ SudokuBits</title>
+  <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/icon-512.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="../assets/icon-512.png">
+  <script src="../assets/theme.js"></script>
+  <script src="../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../assets/icon.svg" alt="" width="36" height="36">
+        <span>SudokuBits</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="เมนูหลัก">
+        <a href="../index.html#modes">ฟีเจอร์</a>
+        <a href="../index.html#try">ลองเล่น</a>
+        <a href="../th/faq.html" aria-current="page">คำถามที่พบบ่อย</a>
+        <a href="../th/privacy.html">ความเป็นส่วนตัว</a>
+        <a href="../th/terms.html">ข้อกำหนด</a>
+        <div class="nav-extra">
+          <p class="eyebrow">นโยบายในภาษาอื่น</p>
+          <div class="langs-inline">
+            <a href="../privacy.html" lang="en" hreflang="en">English</a>
+            <a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a>
+          </div>
+          <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/th_badge_web_generic.png" alt="ดาวน์โหลดที่ Google Play" width="646" height="250" loading="lazy"></a>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="โหมดมืด" hidden>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+        </button>
+        <a class="tile-button primary header-cta" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">ดาวน์โหลดแอป</a>
+        <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="เปิดเมนู" data-open="เปิดเมนู" data-close="ปิดเมนู" hidden>
+          <svg class="menu-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="menu-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="shell legal-main faq-main" tabindex="-1">
+    <header class="legal-heading">
+      <p class="eyebrow">SudokuBits</p>
+      <h1>วิธีใช้และคำถามที่พบบ่อย</h1>
+      <p class="faq-lead">เรื่อง EXP คะแนน เหรียญ การเล่นต่อเนื่อง และการบันทึกออนไลน์ อธิบายแบบเข้าใจง่าย</p>
+      <nav class="langs" aria-label="ภาษาของเอกสาร">
+        <a href="../faq.html" lang="en" hreflang="en">English</a>
+        <a href="faq.html" lang="th" hreflang="th" aria-current="page">ภาษาไทย</a>
+        <a href="../ja/faq.html" lang="ja" hreflang="ja">日本語</a>
+      </nav>
+    </header>
+
+    <nav class="faq-topics" aria-label="หัวข้อ">
+      <ul>
+        <li><a href="#topic-playing">การเล่น</a></li>
+        <li><a href="#topic-exp">EXP และเลเวล</a></li>
+        <li><a href="#topic-points">คะแนนและตารางอันดับ</a></li>
+        <li><a href="#topic-coins">เหรียญและร้านค้า</a></li>
+        <li><a href="#topic-daily">โจทย์ประจำวันและการเล่นต่อเนื่อง</a></li>
+        <li><a href="#topic-cloud">Google Play Games และการบันทึก</a></li>
+        <li><a href="#topic-modes">โหมด แข่งจับเวลา และด่านทดสอบ</a></li>
+        <li><a href="#topic-privacy">ความเป็นส่วนตัวและภาษา</a></li>
+      </ul>
+    </nav>
+
+    <section class="faq-group" id="topic-playing" aria-labelledby="topic-playing-title">
+      <h2 id="topic-playing-title">การเล่น</h2>
+      <details class="faq-item" id="hearts" name="faq">
+        <summary><span>จะเกิดอะไรขึ้นเมื่อเสียหัวใจครบ 3 ดวง?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ใส่เลขผิดแต่ละครั้งจะเสียหัวใจหนึ่งดวง ย้อนกลับแล้วก็ไม่ได้หัวใจคืน พอเสียครบ 3 ดวง เกมจะจบด้วยสถานะหัวใจหมดแล้ว และไม่ได้ EXP หรือคะแนน เริ่มโจทย์เดิมใหม่ได้ทุกเมื่อ</p>
+      </details>
+      <details class="faq-item" id="hint_undo" name="faq">
+        <summary><span>ทำไมถึงย้อนคำใบ้ไม่ได้?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>คำใบ้จะเติมเลขที่ถูกต้องลงในช่อง เลขนั้นจะอยู่ต่อเมื่อกดย้อนกลับ และยังนับว่าใช้คำใบ้แล้ว แบบนี้โบนัสสำหรับการเล่นโดยไม่ใช้คำใบ้จึงยุติธรรม โจทย์ส่วนใหญ่ให้คำใบ้ 3 ครั้ง ส่วนแข่งจับเวลาไม่มีคำใบ้</p>
+      </details>
+      <details class="faq-item" id="saved_game" name="faq">
+        <summary><span>เกมที่บันทึกไว้เก็บอะไรบ้าง?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เก็บทุกอย่างหลังเล่นแต่ละตา ทั้งตัวเลข โน้ต ประวัติการย้อนกลับ เวลา หัวใจ และคำใบ้ กดย้อนกลับหรือปิดแอปจะพักเกมไว้ พอเปิดเกมที่บันทึกไว้อีกครั้ง กระดานจะยังซ่อนอยู่จนกว่าคุณจะแตะเล่นต่อ</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-exp" aria-labelledby="topic-exp-title">
+      <h2 id="topic-exp-title">EXP และเลเวล</h2>
+      <details class="faq-item" id="exp" name="faq">
+        <summary><span>คิด EXP อย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เมื่อผ่านครั้งแรก จะได้ EXP ตามระดับ ง่าย 30 ปานกลาง 60 ยาก 105 ยากมาก 165 เชี่ยวชาญ 240 และมืออาชีพ 360 ถ้าไม่เสียหัวใจจะได้เพิ่ม 20% และถ้าไม่ใช้คำใบ้จะได้เพิ่ม 10% โจทย์ประจำวันเพิ่มอีก 50% คิลเลอร์ให้ 1.5 เท่า ส่วนซามูไรให้ 3 เท่า</p>
+      </details>
+      <details class="faq-item" id="replay_exp" name="faq">
+        <summary><span>ทำไมเล่นซ้ำแล้วได้ EXP น้อยลง?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เมื่อผ่านโจทย์เดิมอีกครั้ง จะได้ 10% ของ EXP ที่จะได้ถ้าเป็นการผ่านครั้งแรกด้วยผลแบบเดียวกัน เช่น เล่นซ้ำระดับง่ายแบบสมบูรณ์จะได้ 3 EXP โจทย์ใหม่ช่วยให้เลเวลขึ้นเร็วกว่า ส่วนการเล่นซ้ำก็ยังได้ EXP เล็กน้อย</p>
+      </details>
+      <details class="faq-item" id="max_level" name="faq">
+        <summary><span>ถึงเลเวล 100 แล้ว ยังสะสม EXP ได้ไหม?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ได้ ตอนนี้เลเวล 100 คือเลเวลสูงสุด แต่ EXP ที่ได้เพิ่มจะยังเก็บไว้และแสดงเป็น EXP เกินเลเวลสูงสุด ถ้าอัปเดตเพิ่มเลเวลหรือขั้นใหม่ คุณจะได้รับตาม EXP ที่สะสมไว้ทันที</p>
+      </details>
+      <details class="faq-item" id="unlock" name="faq">
+        <summary><span>ปลดล็อกระดับที่ยากขึ้นอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>สะสม EXP เพื่อขึ้นขั้นใหม่ ระดับปานกลางปลดล็อกที่มือใหม่ (เลเวล 3) ยากที่นักแก้โจทย์ (เลเวล 8) ยากมากที่นักวางแผน (เลเวล 17) เชี่ยวชาญที่ยอดฝีมือ (เลเวล 33) และมืออาชีพที่นักปราชญ์ (เลเวล 60)</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-points" aria-labelledby="topic-points-title">
+      <h2 id="topic-points-title">คะแนนและตารางอันดับ</h2>
+      <details class="faq-item" id="exp_points_coins" name="faq">
+        <summary><span>EXP คะแนน และเหรียญต่างกันอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>EXP ใช้เพิ่มเลเวลและปลดล็อกระดับที่ยากขึ้น คะแนนใช้จัดอันดับและได้ทุกครั้งที่ผ่านโจทย์ รวมถึงการเล่นซ้ำ ส่วนเหรียญใช้ซื้อของแต่งในร้านค้า ใช้เหรียญแล้ว EXP และคะแนนจะยังอยู่เท่าเดิม</p>
+      </details>
+      <details class="faq-item" id="points" name="faq">
+        <summary><span>คิดคะแนนอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>คะแนนเริ่มต้นขึ้นอยู่กับระดับ ตั้งแต่ง่าย 50 ถึงมืออาชีพ 1,200 แก้เร็วได้เพิ่มสูงสุด 50% หัวใจที่เสียแต่ละดวงหัก 20% คำใบ้แต่ละครั้งหัก 15% และโจทย์ประจำวันเพิ่ม 50% เมื่อผ่านจะได้อย่างน้อย 10% เล่นซ้ำได้ครึ่งหนึ่ง</p>
+      </details>
+      <details class="faq-item" id="not_on_board" name="faq">
+        <summary><span>ทำไมไม่มีชื่อฉันในตารางอันดับ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ตารางอันดับต้องใช้ Google Play Games และอินเทอร์เน็ต ชื่อของคุณจะขึ้นเมื่อมีคะแนนในตารางนั้น เช่น ตารางเร็วที่สุดต้องผ่านโจทย์แข่งจับเวลาระดับเดียวกันครบ 10 ข้อ คะแนนจะถูกส่งหลังจบเกมและตอนซิงก์</p>
+      </details>
+      <details class="faq-item" id="ties" name="faq">
+        <summary><span>ถ้าคะแนนเท่ากัน ใครได้อันดับสูงกว่า?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>คนที่ทำคะแนนนั้นได้ก่อน</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-coins" aria-labelledby="topic-coins-title">
+      <h2 id="topic-coins-title">เหรียญและร้านค้า</h2>
+      <details class="faq-item" id="get_coins" name="faq">
+        <summary><span>หาเหรียญได้อย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ผ่านโจทย์ประจำวันจะได้ 3 เหรียญ วันละครั้ง ตอนเริ่มเล่นคุณยังได้รับเหรียญต้อนรับ 30 เหรียญ เมื่อร้านค้าเปิดให้ดูโฆษณา คุณเลือกดูเพื่อรับ 2 เหรียญต่อครั้ง สูงสุดวันละ 10 ครั้ง ไม่มีการขายเหรียญด้วยเงินจริง</p>
+      </details>
+      <details class="faq-item" id="no_coins" name="faq">
+        <summary><span>ทำไมวันนี้ฉันไม่ได้เหรียญ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>จะได้รับเหรียญประจำวันเฉพาะเมื่อผ่านโจทย์ประจำวันครั้งแรกของวันนั้น ถ้านาฬิกาโทรศัพท์ข้ามไปข้างหน้าเกิน 6 ชั่วโมง ระบบจะพักการให้เหรียญจนกว่าเวลาจะถูกต้องอีกครั้ง การปรับนาฬิกาย้อนหลังก็ไม่ทำให้ได้เหรียญซ้ำในวันเดิม</p>
+      </details>
+      <details class="faq-item" id="looks_kept" name="faq">
+        <summary><span>ของแต่งที่ซื้อจะอยู่กับฉันตลอดไหม?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ใช่ ของแต่งที่ซื้อจะเป็นของคุณแม้อัปเดตแอป เชื่อมต่อ Google Play Games เพื่อบันทึกเหรียญและของแต่งออนไลน์ แล้วเรียกคืนได้เมื่อเปลี่ยนเครื่องหรือติดตั้งแอปใหม่</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-daily" aria-labelledby="topic-daily-title">
+      <h2 id="topic-daily-title">โจทย์ประจำวันและการเล่นต่อเนื่อง</h2>
+      <details class="faq-item" id="daily_same" name="faq">
+        <summary><span>โจทย์ประจำวันเหมือนกันทุกคนไหม?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ใช่ ทุกวันมีโจทย์ประจำวันหนึ่งข้อ ทุกคนได้โจทย์เดียวกันและโจทย์นั้นจะไม่เปลี่ยน ระดับความยากขึ้นอยู่กับวันในสัปดาห์ และไม่เกินระดับสูงสุดที่คุณปลดล็อกไว้</p>
+      </details>
+      <details class="faq-item" id="streak" name="faq">
+        <summary><span>นับจำนวนวันต่อเนื่องอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>นับจำนวนวันที่คุณผ่านโจทย์ประจำวันติดต่อกัน ถ้าวันนี้ยังไม่ผ่านโจทย์ สถิติจะยังไม่ขาดจนกว่าจะหมดวัน ไฟจะโตตามสถิติ ประกายไฟเริ่มที่ 1 วัน ไฟอ่อน 3 วัน ไฟเตาผิง 7 วัน ไฟทองแดง 14 วัน ไฟสีม่วงอ่อน 30 วัน ไฟสีน้ำเงิน 60 วัน และไฟดาว 100 วัน</p>
+      </details>
+      <details class="faq-item" id="wood" name="faq">
+        <summary><span>ฟืนคืออะไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ถ้าพลาดโจทย์เมื่อวานแต่ผ่านโจทย์ของวันก่อนหน้า วันนี้เติมฟืนได้ในราคา 5 เหรียญเพื่อจุดไฟอีกครั้ง วันที่พลาดจะไม่ทำให้สถิติขาด แต่ก็ไม่เพิ่มจำนวนวัน เติมฟืนชดเชยวันที่พลาดติดกันสองวันไม่ได้ และเติมได้ถึงเที่ยงคืนของวันนี้</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-cloud" aria-labelledby="topic-cloud-title">
+      <h2 id="topic-cloud-title">Google Play Games และการบันทึก</h2>
+      <details class="faq-item" id="cloud_saves" name="faq">
+        <summary><span>Google Play Games บันทึกอะไรบ้าง?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ความคืบหน้าของคุณ ได้แก่ เลเวลและ EXP โจทย์ที่ผ่านและสถิติ ตรา เหรียญและของแต่ง เกมที่เล่นค้างไว้ ชื่อ และรูปโปรไฟล์ จะเก็บไว้ในบัญชี Google Play Games ของคุณเอง ส่วนธีม เสียง เพลงและระดับเสียง การเตือน และภาษาจะอยู่แยกกันในแต่ละเครื่อง</p>
+      </details>
+      <details class="faq-item" id="cloud_how" name="faq">
+        <summary><span>การบันทึกออนไลน์ทำงานอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>บัญชี Google Play Games ของคุณเก็บข้อมูลที่บันทึกของ SudokuBits ไว้ชุดเดียว ทุกครั้งที่แอปซิงก์ (ตอนเปิดแอป หลังจบเกม หรือเมื่อแตะซิงก์ตอนนี้) แอปจะดูว่ามีอะไรเปลี่ยนตั้งแต่ซิงก์ครั้งล่าสุด ถ้าเปลี่ยนแค่บนเครื่องนี้ แอปจะบันทึกขึ้นออนไลน์ ถ้าเปลี่ยนแค่ข้อมูลออนไลน์ เช่น คุณไปเล่นบนอีกเครื่อง แอปจะโหลดข้อมูลนั้นมา ข้อมูลสองชุดจะไม่ถูกนำมารวมกัน ข้อมูลชุดเดียวเก็บความคืบหน้าทั้งหมดของคุณเสมอ</p>
+      </details>
+      <details class="faq-item" id="two_phones" name="faq">
+        <summary><span>ถ้าเล่นบนโทรศัพท์สองเครื่องจะเป็นอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เชื่อมต่อทั้งสองเครื่องกับบัญชี Google Play Games เดียวกัน ทั้งคู่จะใช้ข้อมูลที่บันทึกชุดเดียวกัน เครื่องที่คุณเล่นล่าสุดจะบันทึกขึ้นไป และอีกเครื่องจะโหลดมาเมื่อซิงก์ครั้งถัดไป ให้เครื่องหนึ่งซิงก์ก่อนแล้วค่อยไปเล่นอีกเครื่อง ถ้าทั้งสองเครื่องเปลี่ยน เช่น ตอนที่เครื่องหนึ่งออฟไลน์อยู่ แอปจะถามว่าจะเก็บข้อมูลชุดไหนไว้</p>
+      </details>
+      <details class="faq-item" id="which_save" name="faq">
+        <summary><span>ทำไมแอปถามว่าจะเก็บข้อมูลชุดไหน?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เพราะเครื่องนี้และ Google Play Games เปลี่ยนไปทั้งคู่ตั้งแต่ซิงก์ครั้งล่าสุด แต่ละการ์ดแสดงเลเวล เหรียญ จำนวนโจทย์ที่ผ่าน และเวลาที่บันทึก ชุดที่ใหม่กว่าจะมีคำว่าใหม่กว่า ชุดที่คุณเลือกจะถูกเก็บไว้ และอีกชุดจะถูกแทนที่ ซึ่งย้อนกลับไม่ได้ ตราจากทั้งสองชุดจะถูกเก็บไว้เสมอ ถ้ายกเลิกจะไม่มีอะไรเปลี่ยน และแอปจะถามอีกครั้งในครั้งถัดไป</p>
+      </details>
+      <details class="faq-item" id="new_phone" name="faq">
+        <summary><span>ถ้าเปลี่ยนโทรศัพท์ใหม่หรือติดตั้งแอปใหม่ จะเป็นอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เชื่อมต่อ Google Play Games ก่อนเริ่มเล่น แล้วข้อมูลที่บันทึกจะกลับมาเอง ถ้าคุณเล่นไปก่อนแล้ว แอปจะถามว่าจะเก็บข้อมูลชุดไหน โดยแสดงข้อมูลจาก Google Play Games ไว้ก่อน</p>
+      </details>
+      <details class="faq-item" id="accounts" name="faq">
+        <summary><span>เปลี่ยนบัญชีหรือลบข้อมูลบนคลาวด์อย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>หากต้องการเปลี่ยนบัญชี ให้ใช้แอป Google Play Games หากต้องการลบข้อมูลบนคลาวด์ ให้เปิดการตั้งค่า เลือก Google Play Games แล้วเลือกลบข้อมูลบนคลาวด์ ความคืบหน้าบนเครื่องนี้จะยังอยู่</p>
+      </details>
+      <details class="faq-item" id="old_scores" name="faq">
+        <summary><span>ทำไมคะแนนเก่ายังอยู่ในอันดับผู้เล่น?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>อันดับผู้เล่นแต่ละอันจะเก็บคะแนนที่ดีที่สุดของคุณไว้ การลบข้อมูลบนคลาวด์ไม่ทำให้คะแนนหายไป ดังนั้นหลังจากเริ่มใหม่ คะแนนดีที่สุดเดิมจะยังอยู่จนกว่าคะแนนใหม่จะดีกว่า หากต้องการลบคะแนน ให้เปิดแอป Google Play Games ไปที่การตั้งค่า เลือกตัวเลือกสำหรับลบบัญชีและข้อมูล แล้วในส่วนลบข้อมูลของแต่ละเกม ให้แตะลบข้าง SudokuBits ข้อมูลบนคลาวด์ของ SudokuBits จะถูกลบไปด้วยและย้อนกลับไม่ได้ ความคืบหน้าบนเครื่องนี้จะยังอยู่</p>
+      </details>
+      <details class="faq-item" id="offline" name="faq">
+        <summary><span>เล่นแบบออฟไลน์ได้ไหม?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ได้ เล่นโจทย์ทุกแบบ โจทย์ประจำวัน แข่งจับเวลา และบทเรียนได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต ตารางอันดับ การบันทึกออนไลน์ และโฆษณาจะใช้ได้เมื่อกลับมาออนไลน์</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-modes" aria-labelledby="topic-modes-title">
+      <h2 id="topic-modes-title">โหมด แข่งจับเวลา และด่านทดสอบ</h2>
+      <details class="faq-item" id="modes" name="faq">
+        <summary><span>แนวทแยง ซามูไร และคิลเลอร์เล่นอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>โหมดแนวทแยงต้องใส่เลข 1 ถึง 9 ให้ครบในเส้นทแยงยาวทั้งสองเส้น ซามูไรมีห้ากระดาน กระดานที่มุมแต่ละอันใช้บล็อกร่วมกับกระดานกลาง คิลเลอร์ใช้เลขไม่ซ้ำกันในกลุ่มผลรวมเส้นประแต่ละกลุ่ม และเลขในกลุ่มต้องบวกได้ตามผลรวมที่กำหนด ทุกโหมดมีบทสอนสั้น ๆ กับเจซีในแท็บเรียนรู้</p>
+      </details>
+      <details class="faq-item" id="challenges" name="faq">
+        <summary><span>แข่งจับเวลาและด่านทดสอบยอดฝีมือคืออะไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>แข่งจับเวลาคือการแก้โจทย์ให้ทันเวลา มีหัวใจ 3 ดวงและไม่มีคำใบ้ ด่านทดสอบยอดฝีมือมี 100 ด่าน ใช้หัวใจ 5 ดวงและคำใบ้ 10 ครั้งร่วมกันตลอดรอบ ทั้งสองอย่างอยู่ในแท็บแข่ง</p>
+      </details>
+      <details class="faq-item" id="badges" name="faq">
+        <summary><span>ตราที่ได้มาแล้วจะถูกเอาคืนไหม?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>ไม่ เมื่อได้ตราแล้วจะเป็นของคุณตลอด ทั้งหลังอัปเดตและหลังซิงก์</p>
+      </details>
+    </section>
+
+    <section class="faq-group" id="topic-privacy" aria-labelledby="topic-privacy-title">
+      <h2 id="topic-privacy-title">ความเป็นส่วนตัวและภาษา</h2>
+      <details class="faq-item" id="photo" name="faq">
+        <summary><span>รูปของฉันจะถูกส่งออกจากโทรศัพท์ไหม?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>รูปจะออกจากโทรศัพท์เฉพาะตอนบันทึกในบัญชี Google Play Games ของคุณหลังเชื่อมต่อ และตอนที่คุณส่งหรือบันทึกการ์ดแชร์เอง แอปเก็บรูปขนาดเล็กไว้หนึ่งชุดโดยไม่มีข้อมูลตำแหน่ง</p>
+      </details>
+      <details class="faq-item" id="language" name="faq">
+        <summary><span>เปลี่ยนภาษาอย่างไร?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+        <p>เปิดการตั้งค่าแล้วเลือกภาษา จากนั้นเลือกภาษาของโทรศัพท์, English, ไทย หรือ 日本語 ถ้าเลือกภาษาของโทรศัพท์ แอปจะใช้ภาษาไทยหรือญี่ปุ่นตามที่ตั้งไว้บนเครื่อง ภาษาอื่นจะแสดงเป็นอังกฤษ</p>
+      </details>
+    </section>
+
+    <div class="note faq-contact">
+      <p>ยังไม่พบคำตอบใช่ไหม? ส่งอีเมลมาที่ <a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a> หรืออ่าน<a href="../th/privacy.html">นโยบายความเป็นส่วนตัว</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../index.html">
+          <img src="../assets/icon.svg" alt="" width="32" height="32" loading="lazy">
+          <span>SudokuBits</span>
+        </a>
+        <p>เกมซูโดกุบน Android ที่เล่นสบาย ๆ และเล่นได้แบบออฟไลน์</p>
+        <a class="play-badge small" href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/th_badge_web_generic.png" alt="ดาวน์โหลดที่ Google Play" width="646" height="250" loading="lazy"></a>
+      </div>
+      <nav class="footer-col" aria-labelledby="footer-game">
+        <h2 id="footer-game">เกม</h2>
+        <ul>
+          <li><a href="../index.html#modes">ฟีเจอร์</a></li>
+          <li><a href="../index.html#try">ลองเล่น</a></li>
+          <li><a href="../index.html#learn">เรียนกับเจซี</a></li>
+          <li><a href="../th/faq.html" aria-current="page">วิธีใช้และคำถามที่พบบ่อย</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.jccalayag.sudokubits">Google Play</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col footer-langs-col" aria-labelledby="footer-policies">
+        <h2 id="footer-policies">นโยบาย</h2>
+        <ul class="footer-langs">
+            <li lang="en"><span class="lang-name">English</span><a href="../privacy.html" hreflang="en">Privacy Policy</a><a href="../terms.html" hreflang="en">Terms</a></li>
+            <li lang="th"><span class="lang-name">ภาษาไทย</span><a href="../th/privacy.html">นโยบายความเป็นส่วนตัว</a><a href="../th/terms.html">ข้อกำหนด</a></li>
+            <li lang="ja"><span class="lang-name">日本語</span><a href="../ja/privacy.html" hreflang="ja">プライバシーポリシー</a><a href="../ja/terms.html" hreflang="ja">利用規約</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h2>ติดต่อ</h2>
+        <ul>
+          <li><a href="mailto:support.sudokubits@gmail.com">support.sudokubits@gmail.com</a></li>
+        </ul>
+        <p>พัฒนาโดย J.C. Calayag</p>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <p>© 2026 J.C. Calayag. Google Play และโลโก้ Google Play เป็นเครื่องหมายการค้าของ Google LLC</p>
+      <a class="to-top" href="#top">กลับขึ้นด้านบน
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
